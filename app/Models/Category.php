@@ -18,10 +18,6 @@ class Category extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function categories(){
-        return $this->hasMany(Category::class);
-    }
-
     public function tasks(){
         return $this->hasMany(Task::class);
     }
