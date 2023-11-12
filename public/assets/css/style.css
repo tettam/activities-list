@@ -194,3 +194,40 @@ section.graph {
 .actions a:hover {
   transform: scale(1.50);
 }
+
+
+#create_task_section {
+  margin: auto;
+  padding-top: 20px;
+}
+
+#create_task_section h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input_area {
+  display: block;
+  margin: 10px;
+}
+
+.input_area label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input_area input, .input_area select {
+  height: 40px;
+  width: 400px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+
+.input_area textarea {
+  height: 120px;
+  width: 400px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+}

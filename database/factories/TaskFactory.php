@@ -25,6 +25,7 @@ class TaskFactory extends Factory
         return [
             'title' => $this->faker->text(30),
             'description' => $this->faker->text(60),
+            'completed'=>$this->faker->boolean(),
             'startDate' => $this->faker->dateTime(),
             'completedDate' => $this->faker->dateTime(),
             'user_id' => $user,

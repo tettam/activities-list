@@ -2,7 +2,7 @@
   <div class="title_task">
 
     <input type="checkbox" 
-      @if($data && $data['done'])
+      @if($data && $data['completed'])
         checked
       @endif
     />
@@ -12,15 +12,15 @@
 
   <div class="priority">
     <div class="sphere"></div>
-    <h5>{{$data['category'] ?? ''}}</h5>
+    <h5>{{$data['category']->title ?? ''}}</h5>
   </div>
 
   <div class="actions">
     <div class="sphere"></div>
-    <a href="#"">
+    <a href="{{route('task.edit', $data['id'])}}">
       <img src="/assets/images/icon-edit.png" alt="">
     </a>
-    <a href="#">
+    <a href="{{route('task.delete', $data['id'])}}">
       <img src="/assets/images/icon-delete.png" alt="">
     </a>
   </div>
