@@ -6,35 +6,49 @@
     </a>
   </x-slot>
 
-  <section id="create_task_section">
+  <section id="task_section">
     <h1>Criar tarefa</h1>
-    <form>
-
+    <form method="POST" action="{{route('task.create_action')}}">
+      @csrf
+     
+      <x-form.text_input 
+        name="title" 
+        label="Título da tarefa" 
+        required="required" 
+        placeholder="Digite o título da tarefa"
+      /> 
+      <x-form.text_input 
+        name="completedDate" 
+        label="Data de Realização" 
+        type="date"
+      />
+      <x-form.select_input 
+        name="category_id" 
+        label="Categoria">
+        @foreach ($categories as $category)
+          <option value="{{$category->id}}">{{$category->title}}</option>
+        @endforeach
+      </x-form.select_input>
+      <x-form.textarea_input 
+        name="description"
+        label="Descrição"
+        placeholder="Digite a descrição da tarefa"
+        required
+      />
       <div class="input_area">
-        <label for="title">Título</label>
-        <input name="title" id="title" type="text" placeholder="Digite o título da tarefa">
-      </div>
-   
-      <div class="input_area">
-        <label for="completedDate">Data de Realização</label>
-        <input name="completedDate" id="completedDate" type="date" placeholder="Data de Realização">
-      </div>
-   
-      <div class="input_area">
-        <label for="category" @required(true)>Categoria</label>
-        <select id="category_id" name="category_id">
-          <option selected disabled value="">Selecione a categoria</option>
-          <option value="">Valor qualquer</option>
-        </select>
-      </div>
-
-      <div class="input_area">
-        <label for="description">Descrição</label>
-        <textarea name="description" id="" cols="30" rows="10" placeholder="Digite uma descrição"></textarea>
+        <x-form.btn_form 
+          type="reset" 
+          class="btn"
+          label="Resetar"
+        />
+        <x-form.btn_form 
+          type="submit" 
+          class="btn-primary"
+          label="Adicionar"
+        />
       </div>
 
     </form>
-    
   </section>
 
 </x-layout>

@@ -17,10 +17,10 @@
 
   <div class="actions">
     <div class="sphere"></div>
-    <a href="{{route('task.edit', $data['id'])}}">
+    <a href="{{route('task.edit', ['id' => $data['id']]) }}">
       <img src="/assets/images/icon-edit.png" alt="">
     </a>
-    <a href="{{route('task.delete', $data['id'])}}">
+    <a href="{{route('task.delete', ['id' => $data['id']]) }}">
       <img src="/assets/images/icon-delete.png" alt="">
     </a>
   </div>
