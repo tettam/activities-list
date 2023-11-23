@@ -59,4 +59,11 @@ class TaskController extends Controller
         $dbTask = Task::create($task);
         return redirect(route('home'));
     }
+
+    public function update(Request $request) {
+        $task = Task::findOrFail($request->taskId);
+        $task->completed = $request->status;
+        $task->save();
+        return ['success' => true];
+    }
 }

@@ -1,8 +1,8 @@
 <x-layout>
 
   <x-slot name='btn'>
-    <a href="{{route('register')}}" class="btn btn-primary">
-      Não possui conta?
+    <a href="{{route('login')}}" class="btn btn-primary">
+      Já possui conta?
     </a>
   </x-slot>
 

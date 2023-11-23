@@ -7,7 +7,7 @@
   </x-slot>
 
   <section id="task_section">
-    <h1>Registrar-se</h1>
+    <h1>Autenticação</h1>
 
     @if ($errors->any())
       <ul class="alert alert-error">

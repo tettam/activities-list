@@ -4,14 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     public function login() {
+        //Verifica se está logado
+        //Se a sessão é valida
+        if(Auth::check()) {
+            return redirect()->route('home');
+        }
         return view('login');
     }
 
     public function register() {
+        //Faz um SELECT all de todos os dados do usuário
+        //Normalmente para pegar os dados do usuário
+        if (Auth::User()) {
+            return redirect()->route('home');
+        }
         return view('register');
     }
 
@@ -23,6 +35,7 @@ class AuthController extends Controller
         ]);
 
         $data = $request->only('name', 'email', 'password');
+        $data['password'] = Hash::make($data['password']);
         User::create($data);
         
         return redirect(route('login'));
@@ -33,6 +46,14 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        dd($validator);
+        
+        if(Auth::attempt($validator)) {
+            return redirect()->route('home');
+        };
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
